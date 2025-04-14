@@ -39,7 +39,7 @@ public class Main {
                                     qrgen.GenerateQR(Integer.parseInt(bikeid[i]));
                                 }
                             } else {
-                                System.out.println("Identificaç de bicicletainválida");
+                                System.out.println("Identificação de bicicleta inválida");
                             }
 
                         } else if (genop == 2) {
