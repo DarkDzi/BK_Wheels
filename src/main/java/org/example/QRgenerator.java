@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class QRgenerator {
@@ -23,7 +24,7 @@ public class QRgenerator {
 
     public void GenerateQR(int bikeid) {
         caminho = "CodeImages/QrCode_{" + bikeid +"}.png";
-        texto = "https://bike:" + bikeid + "//formulario.com";
+        texto = "https://wp9ywz.csb.app/" + bikeid ; // https://wp9ywz.csb.app/ link do forms
         try {
             BitMatrix matrix = new MultiFormatWriter().encode(
                     texto,
@@ -49,7 +50,7 @@ public class QRgenerator {
 
     public void ListarQRCodes(){
 
-        Path dir = Paths.get("CodeImages");
+        Path dir = Paths.get("CodeImages" );
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.png")) {
             for(Path file : stream){
                 codigos.add(file.getFileName().toString());
@@ -64,7 +65,27 @@ public class QRgenerator {
         }
 
     }
+    public void DeletarQrCodes() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Qual Código você deseja deletar?");
+        int code = scan.nextInt();
+        Path pasta = Paths.get("CodeImages/" + "QrCode_{" + code + "}.png");
+
+        if (Files.exists(pasta)) {
+
+            try {
+                Files.delete(pasta);
+                System.out.println("Arquivo deletado com sucesso!");
+            } catch (Exception e) {
+                System.out.println("Erro ao deletar: " + e.getMessage());
+            }
+        }else{
+            System.out.println("O Arquivo não existe");
+        }
+    }
+
+    }
 
 
-}
+
 

@@ -14,7 +14,8 @@ public class MenuUI {
                    System.out.println("Oque deseja fazer?");
                    System.out.println("1. Gerar um QRCode para uma bicicleta");
                    System.out.println("2. Listar QRCodes já existentes");
-                   System.out.println("3. Sair");
+                   System.out.println("3. Deletar um QrCode Existente ");
+                   System.out.println("4. Sair");
                    System.out.println("=======================================");
                    String opcaoStr = scan.nextLine();
                    int opcao = Integer.parseInt(opcaoStr);
@@ -59,6 +60,9 @@ public class MenuUI {
                            scan.nextLine();
                            break;
                        case 3:
+                           qrgen.DeletarQrCodes();
+                           break;
+                       case 4:
                            menu = false;
                            break;
                        default:
@@ -69,7 +73,7 @@ public class MenuUI {
                    System.out.println("Algo deu errado, certifiqui-se de digitar tudo de forma correta");
                    System.out.println("Erro: " + e.getMessage());
                }
-               System.out.println();
+                   System.out.println();
            }
        }
 }
